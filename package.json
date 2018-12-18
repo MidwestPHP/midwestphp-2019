@@ -1,0 +1,22 @@
+{
+  "name": "midwestphp-2019",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap-scss": "^4.1.3",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "nanogen": "^0.4.2",
+    "node-sass": "^4.9.4",
+    "serverless-s3-sync": "^1.7.0"
+  },
+  "main": "site.config.js",
+  "scripts": {
+    "start": "gulp sass && nanogen start",
+    "build": "gulp sass && nanogen build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

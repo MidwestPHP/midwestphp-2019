@@ -1,0 +1,80 @@
+header {
+  background: url("../img/background.png") #1a293c no-repeat;
+  background-size: cover;
+  font-family: Roboto;
+  padding-bottom: 2rem;
+}
+.navbar-brand {
+  width: 150px;
+}
+.navbar-nav .nav-link {
+  font-size: 1.0rem;
+  font-weight: bold;
+  color: whitesmoke !important;
+  text-transform: uppercase;
+  font-family: "Roboto Condensed";
+  padding-top: 40px;
+}
+.navbar-nav .nav-link:hover {
+  border-bottom: 2px solid #ccc;
+}
+.navbar-nav .active>.nav-link {
+  border-bottom: 2px solid #1b75bb;
+}
+.navbar-nav .nav-link {
+  margin-right: .5rem !important;
+  margin-left: .5rem !important;
+  padding-right: .25rem !important;
+  padding-left: .25rem !important;
+}
+section {
+  padding: 1rem;
+}
+section {
+  color: whitesmoke;
+}
+section.background-dark {
+  background-color: #1a293c;
+  color: whitesmoke;
+}
+section.background-light {
+  padding: 1rem;
+  background-color: white;
+  color: #222;
+}
+section.container .hero {
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+  color: lightgray;
+}
+section#venue .venue-img {
+  background: url('../img/venue.png') center center no-repeat;
+  background-size: cover;
+  height: 250px;
+}
+h1, h2, h3, h4 {
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  text-transform: uppercase;
+}
+section#tickets {
+  padding: 1rem;
+}
+footer {
+  padding: 1rem;
+  background-color: #1a293c;
+  color: whitesmoke;
+}
+.iframe-container {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+.iframe-container iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
