@@ -1,37 +1,38 @@
-var keystone = require('keystone');
-var Enquiry = keystone.list('Enquiry');
+const keystone = require('keystone');
 
-exports = module.exports = function (req, res) {
+const Enquiry = keystone.list('Enquiry');
 
-	var view = new keystone.View(req, res);
-	var locals = res.locals;
+module.exports = (req, res) => {
+  const { View } = keystone;
+  const view = new View(req, res);
+  const { locals } = res;
 
-	// Set locals
-	locals.section = 'contact';
-	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
-	locals.formData = req.body || {};
-	locals.validationErrors = {};
-	locals.enquirySubmitted = false;
+  // Set locals
+  locals.section = 'contact';
+  locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
+  locals.formData = req.body || {};
+  locals.validationErrors = {};
+  locals.enquirySubmitted = false;
 
-	// On POST requests, add the Enquiry item to the database
-	view.on('post', { action: 'contact' }, function (next) {
+  // On POST requests, add the Enquiry item to the database
+  view.on('post', { action: 'contact' }, (next) => {
+    const Model = Enquiry.model;
+    const newEnquiry = new Model();
+    const updater = newEnquiry.getUpdateHandler(req);
 
-		var newEnquiry = new Enquiry.model();
-		var updater = newEnquiry.getUpdateHandler(req);
+    updater.process(req.body, {
+      flashErrors: true,
+      fields: 'name, email, phone, enquiryType, message',
+      errorMessage: 'There was a problem submitting your enquiry:',
+    }, (err) => {
+      if (err) {
+        locals.validationErrors = err.errors;
+      } else {
+        locals.enquirySubmitted = true;
+      }
+      next();
+    });
+  });
 
-		updater.process(req.body, {
-			flashErrors: true,
-			fields: 'name, email, phone, enquiryType, message',
-			errorMessage: 'There was a problem submitting your enquiry:',
-		}, function (err) {
-			if (err) {
-				locals.validationErrors = err.errors;
-			} else {
-				locals.enquirySubmitted = true;
-			}
-			next();
-		});
-	});
-
-	view.render('contact');
+  view.render('contact');
 };

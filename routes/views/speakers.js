@@ -1,29 +1,28 @@
-var keystone = require('keystone');
+const keystone = require('keystone');
 
-exports = module.exports = function (req, res) {
+module.exports = (req, res) => {
+  const view = new keystone.View(req, res);
+  const { locals } = res;
 
-	var view = new keystone.View(req, res);
-	var locals = res.locals;
+  locals.data = {
+    speakers: [],
+  };
 
-	locals.data = {
-		speakers: [],
-	};
+  // locals.section is used to set the currently selected
+  // item in the header navigation.
+  locals.section = 'speakers';
 
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	locals.section = 'speakers';
+  view.on('init', (next) => {
+    keystone.list('Speaker').model.find().exec((err, results) => {
+      if (err || !results.length) {
+        return next(err);
+      }
 
-	view.on('init', function (next) {
-		keystone.list('Speaker').model.find().exec(function (err, results) {
-			if (err || !results.length) {
-				return next(err);
-			}
+      locals.data.speakers = results;
+      return next();
+    });
+  });
 
-			locals.data.speakers = results;
-			next();
-		});
-	});
-
-	// Render the view
-	view.render('speakers');
+  // Render the view
+  view.render('speakers');
 };
