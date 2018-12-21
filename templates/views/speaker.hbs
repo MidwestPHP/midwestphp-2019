@@ -1,0 +1,55 @@
+<div class="speakers-page">
+    <div class="background">
+        <div class="mask1">
+            <div class="mask2">
+                {{> navigation }}
+            </div>
+        </div>
+    </div>
+    <section class="speakers">
+        <div class="row">
+            <div class="small-10 small-centered">
+                <div class="row">
+                    <div class="columns large-3">
+                        <img src="{{data.speaker.image.url}}">
+                        <div class="speakers-social-media">
+                            <a href="https://twitter.com/{{data.speaker.twitter}}" target="_blank">
+                                <i class="fi-social-twitter"></i>
+                            </a>
+                            {{#if data.speaker.github}}
+                            <a href="https://github.com/{{data.speaker.github}}" target="_blank">
+                                <i class="fi-social-github"></i>
+                            </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="columns large-8 end">
+                        <h1>{{data.speaker.speaker}}<small>.</small></h1>
+                        {{data.speaker.company}}
+                        {{data.speaker.bio}}
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Talk</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each data.sessions}}
+                            <tr>
+                                <td><a href="/sessions#{{slug}}">{{title}}</a></td>
+                                <td>{{date}}</td>
+                                <td>{{room}}</td>
+                                <td>{{time}}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

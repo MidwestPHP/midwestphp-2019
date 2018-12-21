@@ -1,0 +1,35 @@
+<div class="sessions-page">
+    <div class="background">
+        <div class="mask1">
+            <div class="mask2">
+                {{> navigation }}
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="row">
+            <div class="small-10 small-centered">
+                <h1>Sessions<small>.</small></h1>
+                <h5>Subject to change.</h5>
+                {{#each data.sessions}}
+                <div class="row">
+                <div id="{{slug}}" class="media-object stack-for-small">
+                    <div class="media-object-section">
+                        <div class="thumbnail">
+                            <img src="{{speaker.image.url}}">
+                            <p class="text-center"><a href="/speakers/{{speaker.slug}}">{{speaker.speaker}}</a></p>
+                        </div>
+                    </div>
+                    <div class="media-object-section main-section">
+                        <h6>{{category}}</h6>
+                        <h4><span class="main">{{title}}</span> <span class="level {{level}}">{{level}} LEVEL</span></h4>
+                        <div class="clearfix"></div>
+                        {{description}}
+                    </div>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</div>

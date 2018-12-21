@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Midwest PHP</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<!-- Compressed CSS -->
+	<link href="/styles/site.css" rel="stylesheet">
+
+	{{!-- This file provides the default styling for the KeystoneJS Content Editor
+	- only renders when user is logged in and admin--}}
+	{{{isAdminEditorCSS user}}}
+
+	{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+	//- Safely remove this block if you are not targeting IE8 --}}
+	<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<div class="off-canvas-wrapper">
+		<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+			<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+				<!-- Close button -->
+				<button class="close-button" aria-label="Close menu" type="button" data-close>
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+				<!-- Menu -->
+				<ul class="mobile-ofc vertical menu">
+					<li><a href="/index" class="hide-for-large">Home</a></li>
+					{{# each navLinks}}
+						<li>
+							<a href="{{ href }}" {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>{{ label }}</a>
+						</li>
+					{{/each}}
+				</ul>
+
+			</div>
+
+			<div class="off-canvas-content" data-off-canvas-content>
+				{{{body}}}
+				{{> footer}}
+			</div>
+		</div>
+	</div>
+	{{!--
+	//- jQuery 1.11.3 is included by default, and required by both Bootstrap
+	//- and the KeystoneJS Content Editor. If you are not targeting IE8,
+	//- you can upgrade to 2.1.4 (also bundled) for better performance.
+	--}}
+	<script src="/js/jquery/jquery-2.1.4.min.js"></script>
+	{{!--
+	//- Customise which Bootstrap javascript files are served by including
+	//- them specifically here, instead of bootstrap-3.3.5.min.js
+	--}}
+	<script src="/js/foundation/what-input.js"></script>
+	<script src="/js/foundation/foundation.js"></script>
+	
+	<script>
+		$(document).foundation();
+		var $speakerModal = $("#speakerModal");
+
+		$(".speakerModal").on('click', function(e){
+				e.preventDefault();
+
+				$("#speakerImg").attr("src", $(this).data("img"));
+				$("#speakerName")($(this).data("name"));
+				$("#speakerCompany")($(this).data("company"));
+				$("#speakerBio")($(this).data("bio"));
+
+				var data = $(this).data();
+				var socialMedia = "";
+				if (data.twitter) {
+					socialMedia += buildLink($(this).data("twitter"), "fi-social-twitter");
+				}
+				$(".speaker-social-media")(socialMedia);
+
+				$speakerModal.foundation('open');
+		});
+
+		var buildLink = function(url, fiClass) {
+			return "<a href=\"" + url + "\" target=\"_blank\"><i class=\"" + fiClass + "\"></i></a>";
+		};
+
+		var $model = $("#exampleModal11");
+
+		$(".exampleModal1").on('click', function(e){
+				e.preventDefault();
+
+				$("#companyLogo").attr("src", $(this).data("logo"));
+				$("#companyDescription")($(this).data("description"));
+
+				var data = $(this).data();
+
+				var socialMedia = "";
+
+				var index;
+				for (index in data) {
+						if (data.hasOwnProperty(index)) {
+								if (index.indexOf("social") !== -1) {
+										switch (index.substring("social".length)){
+												case "Dribbble":
+														socialMedia += buildLink($(this).data(index), "fi-social-dribbble");
+														break;
+												case "Facebook":
+														socialMedia += buildLink($(this).data(index), "fi-social-facebook");
+														break;
+												case "Twitter":
+														socialMedia += buildLink($(this).data(index), "fi-social-twitter");
+														break;
+												case "Youtube":
+														socialMedia += buildLink($(this).data(index), "fi-social-youtube");
+														break;
+												case "Instagram":
+														socialMedia += buildLink($(this).data(index), "fi-social-instagram");
+														break;
+												case "Linkedin":
+														socialMedia += buildLink($(this).data(index), "fi-social-linkedin");
+														break;
+												case "Googleplus":
+														socialMedia += buildLink($(this).data(index), "fi-social-google-plus");
+										}
+								}
+						}
+				}
+
+				$(".sponsor-social-media")(socialMedia);
+
+				$(".website").attr("href", $(this).data('website'));
+
+				$model.foundation('open');
+		});
+	</script>
+	{{{isAdminEditorJS user}}}
+</body>
+
+</html>

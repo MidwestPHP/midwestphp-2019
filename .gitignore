@@ -6,5 +6,7 @@ jspm_packages
 # SCSS output files
 src/assets/css/*.css
 
-# Misc
-public
+public/images/speakers/*
+!public/images/speakers/.gitkeep
+public/images/sponsors/*
+!public/images/sponsors/.gitkeep

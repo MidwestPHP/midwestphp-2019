@@ -1,0 +1,63 @@
+<div class="speakers-page">
+    <div class="background">
+        <div class="mask1">
+            <div class="mask2">
+                {{> navigation }}
+            </div>
+        </div>
+    </div>
+    <section class="speakers">
+        <div class="row">
+            <div class="small-10 small-centered">
+                <h1>Speakers<small>.</small></h1>
+                <h5>Learn From These Great Folks</h5>
+
+                <h3>All Speakers</h3>
+                <div class="row small-up-1 medium-up-3 large-up-4">
+                    {{#each data.speakers}}
+                    {{#if keynote}}
+                    {{else}}
+                    <div class="column text-center">
+                      <p>
+                        <a class="speakerModal" data-bio="{{bio}}"
+                          data-img="{{image.url}}" data-company="{{company}}"
+                          data-twitter="https://twitter.com/{{twitter}}" data-name="{{speaker}}">
+                          <img class="thumbnail" src="{{image.url}}" alt="Photo of {{speaker}}.">
+                          <br>
+                          <strong>{{ speaker }}</strong>
+                        </a>
+                        {{#if company }}
+                          <br><a href="{{ companyUrl }}" target="_blank">{{ company }}</a>
+                        {{/if}}
+                        </p>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="reveal" id="speakerModal" aria-labelledby="speakerModalHeader" data-reveal>
+    <div class="row">
+        <div class="small-centered small-12 columns">
+            <div class="row logo-row">
+                <div class="small-centered small-10 columns text-center">
+                    <img src="" id="speakerImg" class="thumbnail" alt="speaker image"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-centered small-12 columns">
+                    <div class="speaker-social-media text-center"></div>
+                </div>
+            </div>
+            <h4 id="speakerName"></h4>
+            <h5 id="speakerCompany"></h5>
+            <p id="speakerBio"></p>
+        </div>
+    </div>
+    <button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

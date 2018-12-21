@@ -1,0 +1,28 @@
+<section class="speakers-container">
+    <div class="row">
+        <div class="small-centered small-10">
+            <div class="clearfix">
+                <div class="float-left">
+                    <h3>Keynotes
+                        <small>.</small>
+                    </h3>
+                    <p>Learn from these great folks</p>
+                </div>
+                <a href="/speakers" class="button hollow float-right">All Speakers</a>
+            </div>
+            <div class="row">
+                {{#each data.speakers}}
+                <div class="columns large-6 text-center">
+                    <a href="/speakers/{{slug}}">
+                        <img class="thumbnail" src="{{image.url}}" alt="Photo of {{speaker}}.">
+                    </a>
+                    <p>
+                        <strong><a href="/speakers/{{slug}}">{{speaker}}</a></strong><br />
+                        {{company}}
+                    </p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
