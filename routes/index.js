@@ -18,38 +18,38 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+const keystone = require('keystone');
+const middleware = require('./middleware');
+
+const importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-var routes = {
-	views: importRoutes('./views'),
+const routes = {
+  views: importRoutes('./views'),
 };
 
 // Setup Route Bindings
-exports = module.exports = function (app) {
-	// Views
-	app.get('/', routes.views.index);
-	app.get('/code-of-conduct', routes.views.coc);
-	app.get('/safety', routes.views.safety);
-	app.get('/register', routes.views.register);
-	app.get('/speakers', routes.views.speakers);
-	app.get('/speakers/:name', routes.views.speaker);
-	app.get('/sessions', routes.views.sessions);
-	app.get('/schedule', routes.views.schedule);
-	app.get('/venue', routes.views.venue);
-	app.get('/sponsors', routes.views.sponsors);
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
+module.exports = (app) => {
+  // Views
+  app.get('/', routes.views.index);
+  app.get('/code-of-conduct', routes.views.coc);
+  app.get('/safety', routes.views.safety);
+  app.get('/register', routes.views.register);
+  app.get('/speakers', routes.views.speakers);
+  app.get('/speakers/:name', routes.views.speaker);
+  app.get('/sessions', routes.views.sessions);
+  app.get('/schedule', routes.views.schedule);
+  app.get('/venue', routes.views.venue);
+  app.get('/sponsors', routes.views.sponsors);
+  app.get('/blog/:category?', routes.views.blog);
+  app.get('/blog/post/:post', routes.views.post);
+  app.get('/gallery', routes.views.gallery);
+  app.all('/contact', routes.views.contact);
 
-	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
+  // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
+  // app.get('/protected', middleware.requireUser, routes.views.protected);
 };

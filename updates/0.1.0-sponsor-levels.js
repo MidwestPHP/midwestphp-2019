@@ -8,26 +8,26 @@
  */
 
 exports.create = {
-	SponsorLevel: [
-		{
-			name: 'Platinum',
-			order: 1,
-		},
-		{
-			name: 'Gold',
-			order: 2,
-		},
-		{
-			name: 'Silver',
-			order: 3,
-		},
-		{
-			name: 'Bronze',
-			order: 4,
-		},
-		{
-			name: 'Community',
-			order: 5,
-		},
-	],
+  SponsorLevel: [
+    {
+      name: 'Platinum',
+      order: 1,
+    },
+    {
+      name: 'Gold',
+      order: 2,
+    },
+    {
+      name: 'Silver',
+      order: 3,
+    },
+    {
+      name: 'Bronze',
+      order: 4,
+    },
+    {
+      name: 'Community',
+      order: 5,
+    },
+  ],
 };

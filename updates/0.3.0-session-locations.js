@@ -8,15 +8,15 @@
  */
 
 exports.create = {
-	SessionLocation: [
-		{
-			name: 'main ballroom',
-		},
-		{
-			name: 'ballroom c',
-		},
-		{
-			name: 'ballroom d',
-		},
-	],
+  SessionLocation: [
+    {
+      name: 'main ballroom',
+    },
+    {
+      name: 'ballroom c',
+    },
+    {
+      name: 'ballroom d',
+    },
+  ],
 };
