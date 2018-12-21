@@ -10,3 +10,5 @@ public/images/speakers/*
 !public/images/speakers/.gitkeep
 public/images/sponsors/*
 !public/images/sponsors/.gitkeep
+
+.env
