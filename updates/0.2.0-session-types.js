@@ -8,18 +8,18 @@
  */
 
 exports.create = {
-	SessionType: [
-		{
-			name: 'keynote',
-		},
-		{
-			name: 'entry',
-		},
-		{
-			name: 'mid',
-		},
-		{
-			name: 'advanced',
-		},
-	],
+  SessionType: [
+    {
+      name: 'keynote',
+    },
+    {
+      name: 'entry',
+    },
+    {
+      name: 'mid',
+    },
+    {
+      name: 'advanced',
+    },
+  ],
 };
