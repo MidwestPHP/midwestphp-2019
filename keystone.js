@@ -13,10 +13,9 @@ const Helpers = require('./templates/views/helpers')();
 // and documentation.
 
 keystone.init({
-  name: 'Midwest PHP',
-  brand: 'Midwest PHP',
+  name: 'Midwest PHP 2019',
+  brand: 'Midwest PHP 2019',
 
-  // 'sass': 'public',
   static: 'public',
   favicon: 'public/favicon.ico',
   views: 'templates/views',
@@ -38,8 +37,6 @@ keystone.init({
 
 // Load your project's Models
 keystone.import('models');
-
-keystone.mongoose.set('debug', true);
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
