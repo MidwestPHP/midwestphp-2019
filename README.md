@@ -1,19 +1,7 @@
-# Midwest PHP 2019
+# Midwest PHP Conference Site
 
-This repository is for the Midwest PHP 2019 website.  The website is leveraging a static site generator (more on that
-below). Open up issues with any specific issues that are being faced or information that is missing from our page.
+## Requirements
+In order to run the Midwest PHP Conference web site you must have node v8 and MongoDB installed.
 
-## Static Site Generation
-
-We are leveraging [nanogen](https://github.com/doug2k1/nanogen) which is an extremely easy site generator.  This allows
-for all of the templates to be created in EJS along with Markdown and YAML support.  Read the [documentation](https://doug2k1.github.io/nanogen/docs/).
-
-## Source Layout
-* `sass`: Contains SCSS stylesheets to be compiled into the `src/assets/css` folder.
-* `src`: Where all of the webite source code lives.
-
-## Running the Site
-
-`npm install`: Yes, you will need to install the dependencies.
-`npm run start`: Will compile the Sass stylesheets along and all of our nanogen EJS and Markdown templates and then
-launch our browser to view the site.
+## Starting application
+To run the application you just first copy the `.env-template` to `.env` and modify the information with you local mongodb instance and cookie secret.   Once a `.env` file has been created, you may now run `node keystone` in order to start up the application. The application will run on port 3000.
