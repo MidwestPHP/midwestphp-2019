@@ -6,7 +6,7 @@ require('dotenv').config();
 const handlebars = require('express-handlebars');
 const keystone = require('keystone');
 const lodash = require('lodash');
-const Helpers = require('./templates/views/helpers')();
+const helpers = new require('./templates/views/helpers')();
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -25,7 +25,7 @@ keystone.init({
     layoutsDir: 'templates/views/layouts',
     partialsDir: 'templates/views/partials',
     defaultLayout: 'default',
-    helpers: new Helpers(),
+    helpers: helpers,
     extname: '.hbs',
   }).engine,
 
@@ -55,7 +55,6 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
   posts: ['posts', 'post-categories'],
-  galleries: 'galleries',
   enquiries: 'enquiries',
   users: 'users',
 });

@@ -14,7 +14,7 @@ PostCategory.add({
 });
 
 PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'categories' });
-PostCategory.virtual('postCount', {
+PostCategory.schema.virtual('postCount', {
   ref: 'Post',
   localField: 'name',
   foreignField: 'categories',
