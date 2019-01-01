@@ -13,12 +13,19 @@
                     <div class="columns large-3">
                         <img src="{{data.speaker.image.url}}">
                         <div class="speakers-social-media">
+                            {{#if data.speaker.twitter}}
                             <a href="https://twitter.com/{{data.speaker.twitter}}" target="_blank">
                                 <i class="fi-social-twitter"></i>
                             </a>
+                            {{/if}}
                             {{#if data.speaker.github}}
                             <a href="https://github.com/{{data.speaker.github}}" target="_blank">
                                 <i class="fi-social-github"></i>
+                            </a>
+                            {{/if}}
+                            {{#if data.speaker.linkedin}}
+                            <a href="https://www.linkedin.com/in/{{data.speaker.linkedin}}" target="_blank">
+                                <i class="fi-social-linkedin"></i>
                             </a>
                             {{/if}}
                         </div>
@@ -26,7 +33,7 @@
                     <div class="columns large-8 end">
                         <h1>{{data.speaker.speaker}}<small>.</small></h1>
                         {{data.speaker.company}}
-                        {{data.speaker.bio}}
+                        {{{data.speaker.bio}}}
                         <table>
                             <thead>
                             <tr>

@@ -1,0 +1,32 @@
+<div class="dummy"></div>
+<div class="img-container thumbnail logo-container">
+    <div class="centerer"></div>
+    <a class="exampleModal1" data-description="{{description}}"
+        data-logo="{{logo.url}}"
+        data-company="{{company}}" data-website="{{website}}"
+        {{#if facebook}}
+        data-social-facebook="{{facebook}}"
+        {{/if}}
+        {{#if github}}
+        data-social-github="{{github}}"
+        {{/if}}
+        {{#if googleplus}}
+        data-social-googleplus="{{googlepls}}"
+        {{/if}}
+        {{#if instagram}}
+        data-social-instagram="{{instagram}}"
+        {{/if}}
+        {{#if linkedin}}
+        data-social-linkedin="{{linkedin}}"
+        {{/if}}
+        {{#if twitter}}
+        data-social-twitter="{{twitter}}"
+        {{/if}}
+    >
+    {{#if logo.url}}
+    <img class="thumbnail" src="{{logo.url}}" alt="{{comapny}} logo">
+    {{else}}
+    <img class="thumbnail" src="https://dummyimage.com/250x250/fefefe/173249.png&text=Missing+Image" alt="{{company}} logo">
+    {{/if}}
+    </a>
+</div>

@@ -39,14 +39,23 @@ module.exports = (req, res) => {
   });
 
   view.on('init', (next) => {
+    const select = {
+      company: 1,
+      logo: 2,
+      level: 3,
+    };
     keystone.list('Sponsor')
       .model.find()
-      .populate('sponsorlevel')
+      .select(select)
+      .populate('SponsorLevel')
       .exec((err, results) => {
         if (err || !results.length) {
           return next(err);
         }
+
+        // TODO: Need to update the results so we get the correct sponsor level
         locals.data.sponsors = results;
+
         return next();
       });
   });

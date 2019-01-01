@@ -9,9 +9,7 @@
     <section>
         <div class="row">
             <div class="small-10 small-centered end">
-                <h1>Sponsors
-                    <small>.</small>
-                </h1>
+                <h1>Sponsors<small>.</small></h1>
                 <h5 class="level">We Are Proud To Partner With</h5>
 
                 <div class="level-container">
@@ -21,34 +19,7 @@
                     <div class="row medium-centered" data-equalizer data-equalize-by-row="true">
                         {{#each data.platinum}}
                         <div class="large-3 medium-6 column" data-equalizer-watch>
-                            <div class="dummy"></div>
-                            <div class="img-container thumbnail logo-container">
-                                <div class="centerer"></div>
-                                <a class="exampleModal1" data-description="{{description}}"
-                                    data-logo="{{logo.url}}"
-                                    data-company="{{company}}" data-website="{{website}}"
-                                    {{#if facebook}}
-                                    data-social-facebook="{{facebook}}"
-                                    {{/if}}
-                                    {{#if github}}
-                                    data-social-github="{{github}}"
-                                    {{/if}}
-                                    {{#if googleplus}}
-                                    data-social-googleplus="{{googlepls}}"
-                                    {{/if}}
-                                    {{#if instagram}}
-                                    data-social-instagram="{{instagram}}"
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                    data-social-linkedin="{{linkedin}}"
-                                    {{/if}}
-                                    {{#if twitter}}
-                                    data-social-twitter="{{twitter}}"
-                                    {{/if}}
-                                >
-                                <img src="{{logo.url}}" class="thumbnail" alt="{{company}} logo">
-                                </a>
-                            </div>
+                            {{> sponsor}}
                         </div>
                         {{/each}}
                     </div>
@@ -59,36 +30,9 @@
                     <hr>
                     <div class="row" data-equalizer data-equalize-by-row="true">
                         {{#each data.gold}}
-                        <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
-                            <div class="dummy"></div>
-                            <div class="img-container thumbnail logo-container">
-                                <div class="centerer"></div>
-                                <a class="exampleModal1" data-description="{{description}}"
-                                    data-logo="{{logo.url}}"
-                                    data-company="{{company}}" data-website="{{website}}"
-                                    {{#if facebook}}
-                                    data-social-facebook="{{facebook}}"
-                                    {{/if}}
-                                    {{#if github}}
-                                    data-social-github="{{github}}"
-                                    {{/if}}
-                                    {{#if googleplus}}
-                                    data-social-googleplus="{{googlepls}}"
-                                    {{/if}}
-                                    {{#if instagram}}
-                                    data-social-instagram="{{instagram}}"
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                    data-social-linkedin="{{linkedin}}"
-                                    {{/if}}
-                                    {{#if twitter}}
-                                    data-social-twitter="{{twitter}}"
-                                    {{/if}}
-                                >
-                                <img src="{{logo.url}}" class="thumbnail" alt="{{company}} logo">
-                                </a>
+                            <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
+                                {{> sponsor}}
                             </div>
-                        </div>
                         {{/each}}
                     </div>
                 </div>
@@ -98,36 +42,9 @@
                     <hr>
                     <div class="row" data-equalizer data-equalize-by-row="true">
                         {{#each data.silver}}
-                        <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
-                            <div class="dummy"></div>
-                            <div class="img-container thumbnail logo-container">
-                                <div class="centerer"></div>
-                                <a class="exampleModal1" data-description="{{description}}"
-                                    data-logo="{{logo.url}}"
-                                    data-company="{{company}}" data-website="{{website}}"
-                                    {{#if facebook}}
-                                    data-social-facebook="{{facebook}}"
-                                    {{/if}}
-                                    {{#if github}}
-                                    data-social-github="{{github}}"
-                                    {{/if}}
-                                    {{#if googleplus}}
-                                    data-social-googleplus="{{googlepls}}"
-                                    {{/if}}
-                                    {{#if instagram}}
-                                    data-social-instagram="{{instagram}}"
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                    data-social-linkedin="{{linkedin}}"
-                                    {{/if}}
-                                    {{#if twitter}}
-                                    data-social-twitter="{{twitter}}"
-                                    {{/if}}
-                                >
-                                <img src="{{logo.url}}" class="thumbnail" alt="{{company}} logo">
-                                </a>
+                            <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
+                                {{> sponsor}}
                             </div>
-                        </div>
                         {{/each}}
                     </div>
                 </div>
@@ -137,36 +54,9 @@
                     <hr>
                     <div class="row" data-equalizer data-equalize-by-row="true">
                         {{#each data.bronze}}
-                        <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
-                            <div class="dummy"></div>
-                            <div class="img-container thumbnail logo-container">
-                                <div class="centerer"></div>
-                                <a class="exampleModal1" data-description="{{description}}"
-                                    data-logo="{{logo.url}}"
-                                    data-company="{{company}}" data-website="{{website}}"
-                                    {{#if facebook}}
-                                    data-social-facebook="{{facebook}}"
-                                    {{/if}}
-                                    {{#if github}}
-                                    data-social-github="{{github}}"
-                                    {{/if}}
-                                    {{#if googleplus}}
-                                    data-social-googleplus="{{googlepls}}"
-                                    {{/if}}
-                                    {{#if instagram}}
-                                    data-social-instagram="{{instagram}}"
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                    data-social-linkedin="{{linkedin}}"
-                                    {{/if}}
-                                    {{#if twitter}}
-                                    data-social-twitter="{{twitter}}"
-                                    {{/if}}
-                                >
-                                <img src="{{logo.url}}" class="thumbnail" alt="{{company}} logo">
-                                </a>
+                            <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
+                                {{> sponsor}}
                             </div>
-                        </div>
                         {{/each}}
                     </div>
                 </div>
@@ -176,36 +66,9 @@
                     <hr>
                     <div class="row" data-equalizer data-equalize-by-row="true">
                         {{#each data.community}}
-                        <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
-                            <div class="dummy"></div>
-                            <div class="img-container thumbnail logo-container">
-                                <div class="centerer"></div>
-                                <a class="exampleModal1" data-description="{{description}}"
-                                    data-logo="{{logo.url}}"
-                                    data-company="{{company}}" data-website="{{website}}"
-                                    {{#if facebook}}
-                                    data-social-facebook="{{facebook}}"
-                                    {{/if}}
-                                    {{#if github}}
-                                    data-social-github="{{github}}"
-                                    {{/if}}
-                                    {{#if googleplus}}
-                                    data-social-googleplus="{{googlepls}}"
-                                    {{/if}}
-                                    {{#if instagram}}
-                                    data-social-instagram="{{instagram}}"
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                    data-social-linkedin="{{linkedin}}"
-                                    {{/if}}
-                                    {{#if twitter}}
-                                    data-social-twitter="{{twitter}}"
-                                    {{/if}}
-                                >
-                                <img src="{{logo.url}}" class="thumbnail" alt="{{company}} logo">
-                                </a>
+                            <div class="large-2 medium-4 small-6 column " data-equalizer-watch>
+                                {{> sponsor}}
                             </div>
-                        </div>
                         {{/each}}
                     </div>
                 </div>

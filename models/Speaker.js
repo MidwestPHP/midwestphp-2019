@@ -31,6 +31,7 @@ Speaker.add({
   image: { type: Types.File, storage, thumb: true },
   twitter: { type: String },
   github: { type: String },
+  linkedin: { type: String },
 });
 
 /**
