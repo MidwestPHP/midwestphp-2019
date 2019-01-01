@@ -16,13 +16,36 @@ module.exports = (req, res) => {
     community: [],
   };
 
-  view.on('init', (next) => {
-    const platinum = keystone.list('Sponsor').model.find().where({ level: 'platinum' });
-    const gold = keystone.list('Sponsor').model.find().where({ level: 'gold' });
-    const silver = keystone.list('Sponsor').model.find().where({ level: 'silver' });
-    const bronze = keystone.list('Sponsor').model.find().where({ level: 'bronze' });
-    const community = keystone.list('Sponsor').model.find().where({ level: 'community' });
+  const levels = {
+    platinum: null,
+    gold: null,
+    silver: null,
+    bronze: null,
+    community: null,
+  }
 
+  view.on('init', (next) => {
+    keystone.list('SponsorLevel')
+      .model
+      .find()
+      .then((response) => {
+        response.forEach((item) => {
+          levels[`${item.name}`.toLowerCase()] = item._id;
+        });
+        next();
+      })
+      .catch((err) => {
+        next(err);
+      });
+
+  });
+
+  view.on('init', (next) => {
+    const platinum = keystone.list('Sponsor').model.find().where({ level: levels.platinum });
+    const gold = keystone.list('Sponsor').model.find().where({ level: levels.gold });
+    const silver = keystone.list('Sponsor').model.find().where({ level: levels.silver });
+    const bronze = keystone.list('Sponsor').model.find().where({ level: levels.bronze });
+    const community = keystone.list('Sponsor').model.find().where({ level: levels.community });
     Promise.all([
       platinum, gold, silver, bronze, community,
     ]).then(([platinumResults, goldResults, silverResults, bronzeResults, communityResults]) => {

@@ -16,4 +16,6 @@ SponsorLevel.add({
   order: { type: Number, required: true, initial: true },
 });
 
+SponsorLevel.relationship({ ref: 'Sponsor', path: 'sponsorLevels', refPath: 'level' });
+
 SponsorLevel.register();

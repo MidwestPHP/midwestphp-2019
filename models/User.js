@@ -19,8 +19,8 @@ User.add({
 });
 
 // Provide access to Keystone
-User.schema.virtual('canAccessKeystone').get(function() {
-  return this.isAdmin
+User.schema.virtual('canAccessKeystone').get(function () {
+  return this.isAdmin;
 });
 
 

@@ -76,16 +76,24 @@
         e.preventDefault();
 
         $("#speakerImg").attr("src", $(this).data("img"));
-        $("#speakerName")($(this).data("name"));
-        $("#speakerCompany")($(this).data("company"));
-        $("#speakerBio")($(this).data("bio"));
+        $("#speakerName").html($(this).data("name"));
+        $("#speakerCompany").html($(this).data("company"));
+        $("#speakerBio").html($(this).data("bio"));
 
         var data = $(this).data();
         var socialMedia = "";
         if (data.twitter) {
           socialMedia += buildLink($(this).data("twitter"), "fi-social-twitter");
         }
-        $(".speaker-social-media")(socialMedia);
+
+        if (data.github) {
+          socialMedia += buildLink($(this).data("github"), "fi-social-github");
+        }
+
+        if (data.linkedin) {
+          socialMedia += buildLink($(this).data("linkedin"), "fi-social-linkedin");
+        }
+        $(".sponsor-social-media").html(socialMedia);
 
         $speakerModal.foundation('open');
     });
@@ -100,7 +108,7 @@
         e.preventDefault();
 
         $("#companyLogo").attr("src", $(this).data("logo"));
-        $("#companyDescription")($(this).data("description"));
+        $("#companyDescription").html($(this).data("description"));
 
         var data = $(this).data();
 
@@ -136,7 +144,7 @@
             }
         }
 
-        $(".sponsor-social-media")(socialMedia);
+        $(".sponsor-social-media").html(socialMedia);
 
         $(".website").attr("href", $(this).data('website'));
 

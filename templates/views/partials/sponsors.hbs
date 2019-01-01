@@ -16,8 +16,12 @@
                     <div class="dummy"></div>
                     <div class="img-container thumbnail">
                         <div class="centerer"></div>
-                        <a href="/sponsors#{{sponsorlevel.name}}">
-                        <img src="{{logo.url}}" class="logo-container" alt="{{company}} logo">
+                        <a href="/sponsors">
+                        {{#if logo.url}}
+                        <img class="logo-container" src="{{logo.url}}" alt="{{comapny}} logo">
+                        {{else}}
+                        <img class="logo-container" src="https://dummyimage.com/250x250/fefefe/173249.png&text=Missing+Image" alt="{{company}} logo">
+                        {{/if}}
                         </a>
                     </div>
                 </div>

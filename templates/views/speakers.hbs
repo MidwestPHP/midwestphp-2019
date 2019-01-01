@@ -20,9 +20,27 @@
                     <div class="column text-center">
                       <p>
                         <a class="speakerModal" data-bio="{{bio}}"
-                          data-img="{{image.url}}" data-company="{{company}}"
-                          data-twitter="https://twitter.com/{{twitter}}" data-name="{{speaker}}">
+                        {{#if image.url}}
+                          data-img="{{image.url}}"
+                          {{else}}
+                          data-img="https://dummyimage.com/250x250/fefefe/173249.png&text=Missing+Image"
+                          {{/if}}
+                          data-company="{{company}}"
+                          {{#if twitter}}
+                          data-twitter="https://twitter.com/{{twitter}}"
+                          {{/if}}
+                          {{#if github}}
+                          data-github="https://github.com/{{github}}"
+                          {{/if}}
+                          {{#if linkedin}}
+                          data-linkedin="https://www.linkedin.com/in/{{linkedin}}"
+                          {{/if}}
+                          data-name="{{speaker}}">
+                          {{#if image.url}}
                           <img class="thumbnail" src="{{image.url}}" alt="Photo of {{speaker}}.">
+                          {{else}}
+                          <img class="thumbnail" src="https://dummyimage.com/250x250/fefefe/173249.png&text=Missing+Image" alt="Photo of {{speaker}}.">
+                          {{/if}}
                           <br>
                           <strong>{{ speaker }}</strong>
                         </a>
@@ -49,7 +67,7 @@
             </div>
             <div class="row">
                 <div class="small-centered small-12 columns">
-                    <div class="speaker-social-media text-center"></div>
+                    <div class="sponsor-social-media text-center"></div>
                 </div>
             </div>
             <h4 id="speakerName"></h4>

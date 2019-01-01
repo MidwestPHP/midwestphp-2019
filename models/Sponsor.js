@@ -18,6 +18,9 @@ const storage = new keystone.Storage({
     path: keystone.expandPath('./public/images/sponsors'),
     publicPath: '/images/sponsors/',
   },
+  schema: {
+    url: true,
+  },
 });
 
 Sponsor.add({
@@ -34,5 +37,6 @@ Sponsor.add({
   twitter: { type: String },
 });
 
-Sponsor.defaultColumns = 'company, state|20%, author|20%, publishedDate|20%';
+Sponsor.defaultColumns = 'company, level';
+
 Sponsor.register();
