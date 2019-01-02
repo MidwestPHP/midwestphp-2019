@@ -6,20 +6,18 @@
                     <h3>Keynotes
                         <small>.</small>
                     </h3>
-                    <p>Learn from these great folks</p>
+                    <p>Learn from these great speakers</p>
                 </div>
                 <a href="/speakers" class="button hollow float-right">All Speakers</a>
             </div>
             <div class="row">
                 {{#each data.speakers}}
-                <div class="columns large-6 text-center">
+                <div class="columns large-4 text-center">
                     <a href="/speakers/{{slug}}">
-                        <img class="thumbnail" src="{{image.url}}" alt="Photo of {{speaker}}.">
+                        <img class="thumbnail" src="{{image.url}}" alt="Photo of {{speaker}}." style="border-radius: 50%;">
                     </a>
-                    <p>
-                        <strong><a href="/speakers/{{slug}}">{{speaker}}</a></strong><br />
-                        {{company}}
-                    </p>
+                    <h4><a href="/speakers/{{slug}}">{{speaker}}</a></strong></h4>
+                    <p>{{company}}</p>
                 </div>
                 {{/each}}
             </div>
