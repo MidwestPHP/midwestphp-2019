@@ -16,14 +16,10 @@ module.exports = (req, res) => {
   };
   const scheduleKeynoteStub = {
     isKeynote: true,
-    isSessions: false,
-    isEvent: false,
     title: 'TBD',
     speaker: 'TBD',
   };
   const scheduleRoomsStub = {
-    isKeynote: false,
-    isEvent: false,
     isSessions: true,
     'main ballroom': scheduleSpeakerStub,
     'ballroom c': scheduleSpeakerStub,
@@ -76,6 +72,14 @@ module.exports = (req, res) => {
 
         results.forEach(session => {
           if (!session.day || !session.time || !session.room) {
+            return;
+          }
+          if (session.type == 'keynote') {
+            locals.data.schedule[session.day].times[session.time] = {
+              isKeynote: true,
+              title: session.title,
+              speaker: session.speaker.speaker,
+            };
             return;
           }
           locals.data.schedule[session.day].times[session.time][session.room] = {

@@ -17,7 +17,7 @@
                     <div class="medium-12 large-3 columns">
                         <ul class="tabs" data-tabs id="schedule-tabs">
                             {{#each data.schedule}}
-                            <li class="tabs-title{{#if @first}} is-active{{/if}}"><a href="#{{this.id}}" aria-selected="true">{{this.title}}</a></li>
+                            <li class="tabs-title"><a href="#{{this.id}}" aria-selected="true">{{this.title}}</a></li>
                             {{/each}}
                         </ul>
                     </div>
@@ -25,11 +25,12 @@
                 <div class="tabs-content" data-tabs-content="schedule-tabs">
                     {{#each data.schedule}}
                     <div class="tabs-panel is-active" id="{{this.id}}">
+                        <div class="row"><h2>{{this.title}}</h2></div>
                         {{#each this.times}}
                             {{#if this.isEvent }}
                             <div class="row event-block">
                                 <div class="medium-12 large-3 columns  vertical-centering">
-                                    <div class="time">{{ @index }}</div>
+                                    <div class="time">{{ @key }}</div>
                                 </div>
                                 <div class="medium-12 large-9 columns">
                                     <div class="event">
@@ -40,10 +41,10 @@
                                 </div>
                             </div>
                             {{/if}}
-                            {{if this.isKeynote }}
+                            {{#if this.isKeynote }}
                                 <div class="row session-block">
                                     <div class="medium-12 large-3 columns vertical-centering">
-                                        <div class="time">{{ @index }}</div>
+                                        <div class="time">{{ @key }}</div>
                                     </div>
                                     <div class="medium-12 large-9 columns">
                                         <div class="keynote">
@@ -56,19 +57,19 @@
                                     </div>
                                 </div>
                             {{/if}}
-                            {{if this.Sessions}}
+                            {{#if this.isSessions}}
                                 <div class="row session-block">
                                     <div class="medium-12 large-3 columns vertical-centering">
                                         <div class="time">
-                                            {{ @index }}
+                                            {{ @key }}
                                         </div>
                                     </div>
                                     <div class="medium-12 large-3 columns">
                                         <div class="session">
                                             <div class="room">Main Ballroom</div>
                                             <div class="details">
-                                                {{ this[main ballroom].title }}
-                                                <div class="speakers">{{ this[main ballroom].speaker }}</div>
+                                                {{ this.[main ballroom].title }}
+                                                <div class="speakers">{{ this.[main ballroom].speaker }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -76,8 +77,8 @@
                                         <div class="session">
                                             <div class="room">Ballroom C</div>
                                             <div class="details">
-                                                {{ this[ballroom c].title }}
-                                                <div class="speakers">{{ this[ballroom c].speaker }}</div>
+                                                {{ this.[ballroom c].title }}
+                                                <div class="speakers">{{ this.[ballroom c].speaker }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -85,8 +86,8 @@
                                         <div class="session">
                                             <div class="room">Ballroom D</div>
                                             <div class="details">
-                                                {{ this[ballroom d].title }}
-                                                <div class="speakers">{{ this[ballroom d].speaker }}</div>
+                                                {{ this.[ballroom d].title }}
+                                                <div class="speakers">{{ this.[ballroom d].speaker }}</div>
                                             </div>
                                         </div>
                                     </div>
