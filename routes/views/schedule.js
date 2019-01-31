@@ -32,29 +32,29 @@ module.exports = (req, res) => {
         title: '8 MAR',
         id: 'day-1',
         times: {
-          '08:00 AM': { isEvent: true, title: 'Registration', },
-          '09:00 AM': scheduleKeynoteStub,
-          '10:00 AM': scheduleRoomsStub,
-          '11:00 AM': scheduleRoomsStub,
+          '8:00 AM': { isEvent: true, title: 'Registration', },
+          '9:00 AM': Object.assign({}, scheduleKeynoteStub),
+          '10:00 AM': Object.assign({}, scheduleRoomsStub),
+          '11:00 AM': Object.assign({}, scheduleRoomsStub),
           '12:00 PM': { isEvent: true, title: 'Lunch', },
-          '1:00 PM': scheduleKeynoteStub,
-          '2:00 PM': scheduleRoomsStub,
-          '3:00 PM': scheduleRoomsStub,
-          '4:00 PM': scheduleKeynoteStub,
+          '1:00 PM': Object.assign({}, scheduleKeynoteStub),
+          '2:00 PM': Object.assign({}, scheduleRoomsStub),
+          '3:00 PM': Object.assign({}, scheduleRoomsStub),
+          '4:00 PM': Object.assign({}, scheduleKeynoteStub),
         }
       },
       'day 2': {
         title: '9 MAR',
         id: 'day-2',
         times: {
-          '08:00 AM': { isEvent: true, title: 'Registration', },
-          '09:00 AM': scheduleKeynoteStub,
-          '10:00 AM': scheduleRoomsStub,
-          '11:00 AM': scheduleRoomsStub,
+          '8:00 AM': { isEvent: true, title: 'Registration', },
+          '9:00 AM': Object.assign({}, scheduleKeynoteStub),
+          '10:00 AM': Object.assign({}, scheduleRoomsStub),
+          '11:00 AM': Object.assign({}, scheduleRoomsStub),
           '12:00 PM': { isEvent: true, title: 'Lunch', },
-          '1:00 PM': scheduleRoomsStub,
-          '2:00 PM': scheduleRoomsStub,
-          '3:00 PM': scheduleKeynoteStub,
+          '1:00 PM': Object.assign({}, scheduleRoomsStub),
+          '2:00 PM': Object.assign({}, scheduleRoomsStub),
+          '3:00 PM': Object.assign({}, scheduleKeynoteStub),
         }
       },
     },
@@ -65,6 +65,7 @@ module.exports = (req, res) => {
       .model
       .find()
       .populate('speaker')
+      .populate('level')
       .exec((err, results) => {
         if (err || !results.length) {
           return next(err);
@@ -74,7 +75,7 @@ module.exports = (req, res) => {
           if (!session.day || !session.time || !session.room) {
             return;
           }
-          if (session.type == 'keynote') {
+          if (session.level.name == 'keynote') {
             locals.data.schedule[session.day].times[session.time] = {
               isKeynote: true,
               title: session.title,
