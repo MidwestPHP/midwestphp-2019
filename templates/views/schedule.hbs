@@ -16,444 +16,85 @@
                     </div>
                     <div class="medium-12 large-3 columns">
                         <ul class="tabs" data-tabs id="schedule-tabs">
-                            <li class="tabs-title is-active"><a href="#day-one" aria-selected="true">9 MAR</a></li>
-                            <li class="tabs-title"><a href="#day-two">10 MAR</a></li>
+                            {{#each data.schedule}}
+                            <li class="tabs-title{{#if @first}} is-active{{/if}}"><a href="#{{this.id}}" aria-selected="true">{{this.title}}</a></li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>
                 <div class="tabs-content" data-tabs-content="schedule-tabs">
-                    <div class="tabs-panel is-active" id="day-one">
-                        <div class="row event-block">
-                            <div class="medium-12 large-3 columns  vertical-centering">
-                                <div class="time">8:00 AM</div>
-                            </div>
-                            <div class="medium-12 large-9 columns">
-                                <div class="event">
-                                    <div class="details">
-                                        Registration
+                    {{#each data.schedule}}
+                    <div class="tabs-panel is-active" id="{{this.id}}">
+                        {{#each this.times}}
+                            {{#if this.isEvent }}
+                            <div class="row event-block">
+                                <div class="medium-12 large-3 columns  vertical-centering">
+                                    <div class="time">{{ @index }}</div>
+                                </div>
+                                <div class="medium-12 large-9 columns">
+                                    <div class="event">
+                                        <div class="details">
+                                            {{ this.title }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">9:00 AM</div>
-                            </div>
-                            <div class="medium-12 large-9 columns">
-                                <div class="keynote">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Community
-                                        <div class="speakers">Margaret Staples</div>
+                            {{/if}}
+                            {{if this.isKeynote }}
+                                <div class="row session-block">
+                                    <div class="medium-12 large-3 columns vertical-centering">
+                                        <div class="time">{{ @index }}</div>
+                                    </div>
+                                    <div class="medium-12 large-9 columns">
+                                        <div class="keynote">
+                                            <div class="room">Main Ballroom</div>
+                                            <div class="details">
+                                                {{ this.title }}
+                                                <div class="speakers">{{ this.speaker }}</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    10:00 AM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Writing Clean Code
-                                        <div class="speakers">Jason McCreary</div>
+                            {{/if}}
+                            {{if this.Sessions}}
+                                <div class="row session-block">
+                                    <div class="medium-12 large-3 columns vertical-centering">
+                                        <div class="time">
+                                            {{ @index }}
+                                        </div>
+                                    </div>
+                                    <div class="medium-12 large-3 columns">
+                                        <div class="session">
+                                            <div class="room">Main Ballroom</div>
+                                            <div class="details">
+                                                {{ this[main ballroom].title }}
+                                                <div class="speakers">{{ this[main ballroom].speaker }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="medium-12 large-3 columns">
+                                        <div class="session">
+                                            <div class="room">Ballroom C</div>
+                                            <div class="details">
+                                                {{ this[ballroom c].title }}
+                                                <div class="speakers">{{ this[ballroom c].speaker }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="medium-12 large-3 columns">
+                                        <div class="session">
+                                            <div class="room">Ballroom D</div>
+                                            <div class="details">
+                                                {{ this[ballroom d].title }}
+                                                <div class="speakers">{{ this[ballroom d].speaker }}</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        BASHing at the CLI
-                                        <div class="speakers">Chris Tankersley</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Y2K and Other Disappointing Disasters: Risk Reduction and Harm
-                                        <div class="speakers">Heidi Waterhouse</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    11:00 AM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Conquering Continuous Integration &amp; Deployment
-                                        <div class="speakers">Tessa Kriesel</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Banishing Loops with Functional Programming
-                                        <div class="speakers">David Hayes</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Magento 2 Module in 50 Minutes or Bust
-                                        <div class="speakers">Ben Marks</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin event block -->
-                        <div class="row event-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">12:00 PM</div>
-                            </div>
-                            <div class="medium-12 large-9 columns">
-                                <div class="event">
-                                    <div class="details">
-                                        Lunch
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end event block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    1:00 PM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Make It Searchable
-                                        <div class="speakers">Josh Butts</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Don’t Eat Grandma: Common Grammatical Issues in Technical Writing
-                                        <div class="speakers">Kara Ferguson</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Get Rolling Fast with Symfony Flex
-                                        <div class="speakers">Beau Simensen</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    2:00 PM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Cryptography For Beginners
-                                        <div class="speakers">Adam Englander</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Go for PHP Developers
-                                        <div class="speakers">Terrence Ryan</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Make your Application Zend Expressive
-                                        <div class="speakers">Christian Varela</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    3:00 PM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Test Driving Test Driven Development
-                                        <div class="speakers">Jason McCreary</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Managing the extreme client: PM 101 for devs
-                                        <div class="speakers">Brent Peterson</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Intro to Laravel and getting started in the Laravel Ecosystem
-                                        <div class="speakers">Joe Ferguson</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
+                            {{/if}}
+                        {{/each}}
                     </div>
-                    <div class="tabs-panel" id="day-two">
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    9:00 AM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Essential Tools for Modern PHP
-                                        <div class="speakers">Alex Weissman</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Essential AWS for PHP Applications
-                                        <div class="speakers">Michael Moussa</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Hypermedia: The Good, the Bad, and the Ugly
-                                        <div class="speakers">Mike Stowe</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    10:00 AM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Practical API Security
-                                        <div class="speakers">Adam Englander</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Diving into MySQL 5.7: advanced features
-                                        <div class="speakers">Gabriela Ferrara</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Open Source eCommerce Melee
-                                        <div class="speakers">Ben Marks</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    11:00 AM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Virtual Machine, Container, or Serverless
-                                        <div class="speakers">Terrence Ryan</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Demystifying Algorithmic Complexity
-                                        <div class="speakers">John Bafford</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Welcome to Our Product: Hospitality, Experiences, and Documentation
-                                        <div class="speakers">Heidi Waterhouse</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin event block -->
-                        <div class="row event-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">12:00 PM</div>
-                            </div>
-                            <div class="medium-12 large-9 columns">
-                                <div class="event">
-                                    <div class="details">
-                                        Lunch
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end event block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    1:00 PM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        APIs, Chains, &amp; Graphs
-                                        <div class="speakers">Mike Stowe</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        Improving Technical Annotations and Estimates for Your Projects
-                                        <div class="speakers">Jessica Feigal</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Puppets, Chefs, and Ansibles - Making sense of the provisioning circus
-                                        <div class="speakers">Joe Ferguson</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <!-- begin session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">
-                                    2:00 PM
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Developing a Culture of Mentorship
-                                        <div class="speakers">Tessa Kriesel</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom C</div>
-                                    <div class="details">
-                                        They Are Watching You
-                                        <div class="speakers">Chris Tankersley</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 large-3 columns">
-                                <div class="session">
-                                    <div class="room">Ballroom D</div>
-                                    <div class="details">
-                                        Introduction to Event Sourcing and CQRS
-                                        <div class="speakers">Beau Simensen</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end session block -->
-                        <div class="row session-block">
-                            <div class="medium-12 large-3 columns vertical-centering">
-                                <div class="time">3:00 PM</div>
-                            </div>
-                            <div class="medium-12 large-9 columns">
-                                <div class="keynote">
-                                    <div class="room">Main Ballroom</div>
-                                    <div class="details">
-                                        Open Source, accessibility, and you - the superhero!
-                                        <div class="speakers">Nicolas Steenhout</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
