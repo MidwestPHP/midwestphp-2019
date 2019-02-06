@@ -15,7 +15,7 @@
                 conference.</p>
                 <a href="/pdf/prospectus.pdf" class="button hollow">Prospectus</a>
                 <h5 class="level">We Are Proud To Partner With</h5>
-
+                {{#if data.platinum.length }}
                 <div class="level-container">
                     <a name="platinum"></a>
                     <h5 class="level">Platinum</h5>
@@ -28,6 +28,8 @@
                         {{/each}}
                     </div>
                 </div>
+                {{/if}
+                {{#if data.gold.length }}
                 <div class="level-container">
                     <a name="gold"></a>
                     <h5 class="level">Gold</h5>
@@ -40,6 +42,8 @@
                         {{/each}}
                     </div>
                 </div>
+                {{/if}
+                {{#if data.silver.length }}
                 <div class="level-container">
                     <a name="silver"></a>
                     <h5 class="level">Silver</h5>
@@ -52,6 +56,8 @@
                         {{/each}}
                     </div>
                 </div>
+                {{/if}
+                {{#if data.bronze.length }}
                 <div class="level-container">
                     <a name="bronze"></a>
                     <h5 class="level">Bronze</h5>
@@ -64,6 +70,8 @@
                         {{/each}}
                     </div>
                 </div>
+                {{/if}
+                {{#if data.community.length }}
                 <div class="level-container">
                     <a name="community"></a>
                     <h5 class="level">Community</h5>
@@ -76,6 +84,7 @@
                         {{/each}}
                     </div>
                 </div>
+                {{/if}
             </div>
         </div>
     </section>
