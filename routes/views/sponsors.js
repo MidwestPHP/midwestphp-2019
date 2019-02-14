@@ -14,6 +14,7 @@ module.exports = (req, res) => {
     silver: [],
     bronze: [],
     community: [],
+    inkind: [],
   };
 
   const levels = {
@@ -22,6 +23,7 @@ module.exports = (req, res) => {
     silver: null,
     bronze: null,
     community: null,
+    inkind: null,
   }
 
   view.on('init', (next) => {
@@ -46,14 +48,16 @@ module.exports = (req, res) => {
     const silver = keystone.list('Sponsor').model.find().where({ level: levels.silver });
     const bronze = keystone.list('Sponsor').model.find().where({ level: levels.bronze });
     const community = keystone.list('Sponsor').model.find().where({ level: levels.community });
+    const inkind = keystone.list('Sponsor').model.find().where({ level: levels.inkind });
     Promise.all([
-      platinum, gold, silver, bronze, community,
-    ]).then(([platinumResults, goldResults, silverResults, bronzeResults, communityResults]) => {
+      platinum, gold, silver, bronze, community, inkind,
+    ]).then(([platinumResults, goldResults, silverResults, bronzeResults, communityResults, inkindResults]) => {
       locals.data.platinum = platinumResults;
       locals.data.gold = goldResults;
       locals.data.silver = silverResults;
       locals.data.bronze = bronzeResults;
       locals.data.community = communityResults;
+      locals.data.inkind = inkindResults;
       next();
     })
       .catch((err) => {
