@@ -16,6 +16,7 @@ module.exports = (req, res) => {
       .model
       .find()
       .populate('speaker')
+      .populate('level')
       .exec((err, results) => {
         if (err || !results.length) {
           return next(err);
