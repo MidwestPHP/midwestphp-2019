@@ -37,11 +37,10 @@ module.exports = (req, res) => {
           '10:00 AM': Object.assign({}, scheduleRoomsStub),
           '11:00 AM': Object.assign({}, scheduleRoomsStub),
           '12:00 PM': { isEvent: true, title: 'Lunch', },
-          '1:00 PM': Object.assign({}, scheduleKeynoteStub),
+          '1:00 PM': Object.assign({}, scheduleRoomsStub),
           '2:00 PM': Object.assign({}, scheduleRoomsStub),
           '3:00 PM': Object.assign({}, scheduleRoomsStub),
-          '4:00 PM': Object.assign({}, scheduleKeynoteStub),
-          '5:00 PM': { isEvent: true, title: 'Social Hour | Birds of a Feather | Game Night', },
+          '4:00 PM': { isEvent: true, title: 'Social Hour | Birds of a Feather | Game Night', },
         }
       },
       'day 2': {
