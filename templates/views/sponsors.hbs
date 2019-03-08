@@ -81,6 +81,20 @@
                     </div>
                 </div>
                 {{/if}}
+                {{#if data.inkind.length }}
+                <div class="level-container">
+                    <a name="inkind"></a>
+                    <h5 class="level">In-kind</h5>
+                    <hr>
+                    <div class="row" data-equalizer data-equalize-by-row="true">
+                        {{#each data.inkind}}
+                            <div class="medium-4 small-6 column " data-equalizer-watch>
+                                {{> sponsor}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
             </div>
         </div>
     </section>
